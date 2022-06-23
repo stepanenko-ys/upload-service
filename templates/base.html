@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        {% load static %}
+
+        <meta charset="utf-8">
+
+        <title>Parsing from URL or File</title>
+
+        <meta name="description" content="Parsing from URL or File"/>
+        <meta name="keywords" content="parsing, from url, file"/>
+
+        <link rel="canonical" href="https://upwork-4237.herokuapp.com/">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <!-- NAVBAR CONTAINER -->
+        {% include 'navbar.html' %}
+        <!-- / NAVBAR CONTAINER -->
+
+        {% block content %}
+        {% endblock content %}
+
+        <!-- All Scripts -->
+        {% include 'scripts.html' %}
+        <!-- / All Scripts -->
+
+    </body>
+</html>

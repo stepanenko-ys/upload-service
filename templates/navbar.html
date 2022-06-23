@@ -1,0 +1,30 @@
+<div class="navbar">
+
+            <div class="logo-container" id="logo-container">
+                <div class="about-container">
+                    <div class="btn-home">
+                        <a href="/" class="white-1 link-home">
+                            <img src="/static/icons/icon-home.svg" class="icon-home"><br>
+                            Home Page
+                        </a>
+                    </div>
+                    <div class="about-project-text">
+                        {{ project_description|safe }}
+                    </div>
+                </div>
+                <div class="label-logo">
+                    Parsing from URL or File
+                </div>
+            </div>
+
+            <div class="btn-powered-by" id="btn-powered-by">
+                <div>
+                    ys.stepanenko@gmail.com<br>
+                    +48 795 042 141 <a href="{% url 'logout' %}"><img src="/static/icons/lcon-watsapp.png" class="icon-watsapp"><br></a>
+                </div>
+                <div class="label-powered-by">
+                    <span class="grey-1">Powered by</span> Yevhen Stepanenko
+                </div>
+            </div>
+
+        </div>

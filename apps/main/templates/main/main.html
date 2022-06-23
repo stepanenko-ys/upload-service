@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+    {% csrf_token %}
+
+    <div style="margin: 0px auto; padding-top: 50px; justify-content: center;">
+
+        <div class="enter-url_container">
+
+            <div class="btn__add-folder" onclick="addNewFolder()">
+                <img src="https://www.svgrepo.com/show/315905/add-folder.svg" alt="" style="margin-right: 5px;" height="40">
+                <div style="font-size: 26px; margin-left: 15px;">Add new folder</div>
+            </div>
+
+            <hr>
+
+            <div id="folder-rows">
+                {% for folder in folder_tree %}
+                    <div class="folder-row" data-unique_folder_name="{{ folder.unique_folder_name }}">
+                        <div style="display: flex; position: relative;">
+                            {% if folder.share %}
+                                <div class="share-icon-block" onmouseover="overShareIconBlock(this)" onmouseout="outShareIconBlock(this)">
+                                    <img src="https://www.svgrepo.com/show/1328/cloud.svg" alt="" class="share-icon" onclick="enableShareFolder(this)">
+                                    <div class="unique_folder_name hide">{{ folder.unique_folder_name }}</div>
+                                </div>
+                            {% else %}
+                                <img src="https://www.svgrepo.com/show/90409/cloud.svg" alt="" class="share-icon" onclick="disabledShareFolder(this)">
+                            {% endif %}
+                            <div class="block_input-folder-name hide">
+                                <div style="display: flex;">
+                                    <input type="text" class="input_folder-name" value="{{ folder.forder_name }}">
+                                    <img src="https://www.svgrepo.com/show/362151/sign-check.svg" alt="" height="25" style="margin-left: 5px;" onclick="renameFolder(this)">
+                                </div>
+                            </div>
+                            <img src="https://www.svgrepo.com/show/19947/folders.svg" alt="" class="folder-icon" onclick="showFileInFolder(this)">
+                            <span onclick="showFileInFolder(this)" style="padding: 0 100px 4px 0;">{{ folder.forder_name }}</span>
+                        </div>
+                        <div>
+                            <img src="https://www.svgrepo.com/show/60515/edit.svg" alt="" class="edit-icon" onclick="enableRenameFolder(this)">
+                            <img src="https://www.svgrepo.com/show/45964/delete.svg" alt="" class="edit-icon" onclick="deleteFolder(this)">
+                        </div>
+                    </div>
+
+                    <div class="hide" data-is-open="false" style="padding-left: 30px;"></div>
+
+                {% endfor %}
+
+
+
+
+
+{#                {% for folder in folders %}#}
+{#                    <div class="folder-row" data-unique_folder_name="{{ folder.unique_folder_name }}">#}
+{#                        <div style="display: flex; position: relative;">#}
+{#                            {% if folder.share %}#}
+{#                                <div style="position: relative;" class="share-icon-block">#}
+{#                                    <img src="https://www.svgrepo.com/show/1328/cloud.svg" alt="" class="share-icon" onclick="enableShareFolder(this)">#}
+{#                                    <div class="unique_folder_name hide">{{ folder.unique_folder_name }}</div>#}
+{#                                </div>#}
+{#                            {% else %}#}
+{#                                <img src="https://www.svgrepo.com/show/90409/cloud.svg" alt="" class="share-icon" onclick="disabledShareFolder(this)">#}
+{#                            {% endif %}#}
+{#                            <div class="block_input-folder-name hide">#}
+{#                                <div style="display: flex;">#}
+{#                                    <input type="text" class="input_folder-name" value="{{ folder.name }}">#}
+{#                                    <img src="https://www.svgrepo.com/show/362151/sign-check.svg" alt="" height="25" style="margin-left: 5px;" onclick="renameFolder(this)">#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <img src="https://www.svgrepo.com/show/19947/folders.svg" alt="" class="folder-icon">#}
+{#                            {{ folder.name }}#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="https://www.svgrepo.com/show/60515/edit.svg" alt="" style="cursor: pointer; margin: 0 2px 5px;" height="15" onclick="enableRenameFolder(this)">#}
+{#                            <img src="https://www.svgrepo.com/show/45964/delete.svg" alt="" style="cursor: pointer; margin: 0 2px 5px;" height="15" onclick="deleteFolder(this)">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock content %}
+
+
+
